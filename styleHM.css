@@ -1,0 +1,33 @@
+.busqueda{
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+.busqueda input{
+    padding: 10px;
+    width: 200px;
+}
+.busqueda button{
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    margin-left: 5px;
+}
+table{
+    margin: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+table th, table td{
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+table th{
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+table td img{
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}

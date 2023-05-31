@@ -4,39 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleHM.css">
     <title>Historial medico</title>
 </head>
 <body>
     <header>
         <h1>Historial medico</h1>
     </header>
-    <section>
-        <table>
+    <div class="buqueda">
+        <input type="text" placeholder="Buscar...">
+        <button><img src="C:\Users\mimoc\OneDrive\UNIVERSIDAD\5 QUINTO CUATRIMESTRE\Fundamentos de programación orientada a objetos\segundo parcial\GitHub\POOS181\pr3busqueda.jpg" alt="buscar"></button>
+    </div>
+    <table>
+        <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Medico</th>
-                <th>Diagnostico</th>
+                <th>Paciente</th>
+                <th>Médico</th>
+                <th>Diagnóstico</th>
                 <th>Receta</th>
             </tr>
+        </thead>
+        <tbody>
             <tr>
-                <th>Paciente1</th>
-                <th>Medico1</th>
-                <th> <img src="" alt=""></th>
-                <th><img src="" alt=""></th>
+                <td>Aranza Rubio</td>
+                <td>Fabrizio Oteo</td>
+                <td><a src="pr3descarga.jpg" alt="Descargar"></a><a src="pr3guardar.png" alt="Guardar"></a></td>
+                <td><a src="pr3imprimir.jpg" alt="Imprimir"></a><a src="pr3descarga.jpg" alt="Descargar"></a></td>
             </tr>
             <tr>
-                <th>Paciente2</th>
-                <th>Medico2</th>
-                <th> <img src="" alt=""></th>
-                <th><img src="" alt=""></th>
+                <td>Valeria Castro</td>
+                <td>Fabrizio Oteo</td>
+                <td><a src="pr3descarga.jpg" alt="Descargar"></a><a src="pr3guardar.png" alt="Guardar"></a></td>
+                <td><a src="pr3imprimir.jpg" alt="Imprimir"></a><a src="pr3descarga.jpg" alt="Descargar"></a></td>
             </tr>
-            <tr>
-                <th>Paciente3</th>
-                <th>Medico3</th>
-                <th> <img src="" alt=""></th>
-                <th><img src="" alt=""></th>
-            </tr>
-        </table>
-    </section>
+        </tbody>
+    </table>
 </body>
 </html>

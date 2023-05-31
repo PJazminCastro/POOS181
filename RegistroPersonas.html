@@ -10,38 +10,39 @@
 <body>
     <div class="titreg">
     <header>
-        <h1>Registro de persona</h1>
+        <h1>Registro de pacientes</h1>
     </header>
     </div>
-    <div class="seccionD">
-        <section>
-            <select name="Médico responsable" id="">
-                <option value="Médico1">Medico1</option>
-                <option value="Médico2">Medico2</option>
-                <option value="Médico3">Medico3</option>
-            </select>
-            <kbd>Nombre</kbd>
-            <kbd>Apellidos</kbd>
-            <input type="date" name="Fecha nacimiento">
-            <select name="Enfermedades cronicas" id="">
-                <option value="Enfermedad1">Medico1</option>
-                <option value="Enfermedad2">Medico2</option>
-                <option value="Enfermedad3">Medico3</option>
-            </select>
-    </div>
-    <div name="SeccionI">
-        <kbd>Alergias</kbd>
-        <select name="Antecedentes familiares" id="">
-            <option value="Antecedente1">Medico1</option>
-            <option value="Antecedente2">Medico2</option>
-            <option value="Antecedente3">Medico3</option>
+    <form>
+        <label for="medico">Medico responsable:</label>
+        <select id="medico">
+            <option value="medico1">Medico1</option>
+            <option value="medico2">Medico2</option>
+            <option value="medico3">Medico3</option>
         </select>
-        <select name="Rol" id="">
-            <option value="Medico">Medico1</option>
-            <option value="Paciente">Medico2</option>
-        </select>
-        </section>
-    </div>
-    <input type="submit" name="Registrar">
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre">
+        <label for="apellidos">Apellidos: </label>
+        <input type="text" id="apellidos">
+        <div class="fechanacimiento">
+            <label for="fechanacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechanacimiento">
+        </div>
+        <label for="enfermedadescronicas">Enfermedades crónicas:</label>
+            <select id="enfermedadescronicas">
+                <option value="ninguno">Ninguno</option>
+                <option value="asma">Asma</option>
+                <option value="otro">otro</option>
+            </select>
+        <label for="antecedentes">Antecedentes familiares:</label>
+            <select id="antecedentes">
+                <option value="ninguno">Ninguno</option>
+                <option value="diabetes">Diabetes</option>
+                <option value="hipertension">Hipertension</option>
+            </select>
+        <label for="alergias">Alergias:</label>
+        <textarea id="alergias"></textarea>
+        <input type="submit" value="Registrar">
+    </form>  
 </body>
 </html>

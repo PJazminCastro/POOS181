@@ -19,12 +19,12 @@ textarea{
 select{
     height: 40px;
 }
-.fechanacimiento{
+.fechacita{
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
-.fechanacimiento label{
+.fechacita label{
     margin-right: 10px;
 }
 input[type="submit"]{

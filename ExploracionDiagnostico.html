@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleED.css">
     <title>Diagnostici</title>
 </head>
 <body>
     <header>
         <h1>Diagnostico medico</h1>
     </header>
-    <section>
-        <kbd>folio</kbd>
-        <kbd>Peso</kbd>
-        <kbd>Altura</kbd>
-        <kbd>Temperatura</kbd>
-        <kbd>Latidos por minuto</kbd>
-        <kbd>Saturacion de glucosa</kbd>
-        <kbd>Sintomas</kbd>
-        <kbd>Tratamiento</kbd>
-        <select name="Estudios">
-            <option value="Estudio1">Estudio1</option>
-            <option value="Estudio2">Estudio2</option>
-            <option value="Estudio3">Estudio3</option>
-        </select>
-        <input type="date", name="Fecha">
-    </section>
+    <fomr>
+        <label for="folio">09346</label>
+        <label for="peso">Peso:</label>
+        <input type="text" id="peso">
+        <label for="altura">Altura:</label>
+        <input type="text" id="altura">
+        <label for="temperatura">Temperatura:</label>
+        <input type="text" id="temperatura">
+        <label for="latidosxminuto">L.P.M:</label>
+        <input type="text" id="latidosxminuto">
+        <label for="glucosa">Saturación de glucosa:</label>
+        <input type="text" id="glucosa">
+        <label for="alergias">Alergias:</label>
+        <textarea id="peso"></textarea>
+        <label for="tratamiento">Tratamiento:</label>
+        <textarea id="tratamiento"></textarea>
+        <div class="fechacita">
+            <label for="fechacita">Fecha de cita:</label>
+            <input type="date" id="fechacita">
+        </div>
+        <input type="submit" value="Generar receta">
+    </fomr>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="styleRM.css">
+</head>
+<body>
+    <div class="titreg">
+    <header>
+        <h1>Registro de medicos</h1>
+    </header>
+    </div>
+    <form>
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre">
+        <label for="apellidos">Apellidos: </label>
+        <input type="text" id="apellidos">
+        <label for="rfc">RFC: </label>
+        <input type="text" id="rfc">
+        <div class="fechanacimiento">
+            <label for="fechanacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechanacimiento">
+        </div>
+        <label for="especialidad">Especialidad:</label>
+            <select id="especialidad">
+                <option value="cirujano">Cirujano</option>
+                <option value="neurologia">Nurologia</option>
+                <option value="pediatria">Pediatria</option>
+            </select>
+        <input type="submit" value="Registrar">
+    </form>  
+</body>
+</html>
