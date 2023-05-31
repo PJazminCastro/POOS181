@@ -1,6 +1,11 @@
 form{
     width: 400px;
     margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+body h1{
+    text-align: center;
+    background-color: gray;
 }
 label {
     display: block;
@@ -28,12 +33,12 @@ select{
     margin-right: 10px;
 }
 input[type="submit"]{
-    background-color: #4caf50;
+    background-color: #4c6faf;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: ponter;
 }
 input[type="submit"]:hover{
-    background-color: #45a049;
+    background-color: #4562a0;
 }

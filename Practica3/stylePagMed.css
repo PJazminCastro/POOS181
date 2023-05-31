@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.contenedor{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+}
+.navegacion{
+    background-color: #333;
+    color: #fff;
+}
+.navegacion ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.navegacion li{
+    float: left;
+}
+.navegacion li a{
+   display: block;
+   color: #fff;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+}
+.navegacion li a:hover{
+    background-color: #111;
+}
+.datosMedico section{
+    flex-shrink: 0;
+    width: 300px;
+    background-color: #d3a0a0;
+    padding: 20px;
+}
+.datosMedico h2{
+    font-size: 18px;
+    margin-top: 0;
+}
+.datosMedico p{
+    margin-bottom: 10px;
+}
