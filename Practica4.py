@@ -1,11 +1,27 @@
-from tkinter import *;
-from tkinter import ttk;
-from DatosP4 import *;
-import tkinter as tk;
+from tkinter import *
+from tkinter import ttk
+import tkinter as tk
+from DatosP4 import *
+
+
+controlador = ConstructorBD()
+
+def ejecutaRegistro():
+    controlador.registrarBebidas(varNom.get(), varClas.get(), varMarc.get(), varPrec.get())
+    print(varNom, varClas, varMarc, varPrec)
+def ejecutaEliminar():
+    controlador.eliminarRBebidas(varId.get())
+def ejecutaConsulta():
+    rUsu = controlador.consultarRegistros()
+    tablaCons.delete(*tablaCons.get_children())
+    for usu in rUsu:
+        tablaCons.insert('', 'end', text=usu[0], values=(usu[1], usu[2], usu[3], usu[4]))
+def ejecutaActualizacion():
+    controlador.actualizarRegistros(varNom.get(), varClas.get(), varMarc.get(), varPrec.get())
 
 ventana = Tk()
 ventana.title('Almacen de bebidas - Practica 4')
-ventana.geometry('250x400')
+ventana.geometry('500x300')
 
 panel = ttk.Notebook(ventana)
 panel.pack(fill='both', expand='yes')
@@ -17,31 +33,31 @@ pestana4 = ttk.Frame(panel)
 
 #Pestaña agregar producto
 titulo = Label(pestana1, text='Registro productos').pack()
-varId = tk.StringVar()
-lblId = Label(pestana1, text='Id: ').pack()
-txtId = Entry(pestana1, textvariable=varId).pack()
 varNom = tk.StringVar()
 lblNom = Label(pestana1, text='Nombre: ').pack()
 txtNom = Entry(pestana1, textvariable=varNom).pack()
 varClas = tk.StringVar()
 lblClas = Label(pestana1, text='Clasificación: ').pack()
 txtClas = tk.Entry(pestana1, textvariable=varClas).pack()
+varMarc = tk.StringVar()
+lblMarc = Label(pestana1, text='Marca: ').pack()
+txtMarc = tk.Entry(pestana1, textvariable=varMarc).pack()
 varPrec = tk.StringVar()
 lblPrec = Label(pestana1, text='Precio: ').pack()
 txtPrec = tk.Entry(pestana1, textvariable=varPrec).pack()
 
-btnRegistrar = Button(pestana1, text='Guardar').pack()
+btnRegistrar = Button(pestana1, text='Guardar', command=ejecutaRegistro).pack()
 
 #Pestaña eliminar producto
-titulo2 = Label(pestana2, text='Eliminar productos')
+titulo2 = Label(pestana2, text='Eliminar productos').pack()
 varId = tk.StringVar()
-lblId = Label(pestana1, text='Id: ').pack()
-txtId = Entry(pestana1, textvariable=varId).pack()
+lblId = Label(pestana2, text='Id: ').pack()
+txtId = Entry(pestana2, textvariable=varId).pack()
 
-btnEliminar = Button(pestana2, text='Eliminar').pack()
+btnEliminar = Button(pestana2, text='Eliminar', command=ejecutaEliminar).pack()
 
 #Pestaña consulta
-subCons= Label(pestana3,text= 'Registros', fg='purple', font=('Modern',18)).pack()
+titulo3= Label(pestana3,text= 'Registros', fg='purple', font=('Modern',18)).pack()
 tablaCons = ttk.Treeview(pestana3)
 tablaCons['columns'] = ('Nombre', 'Clasificacion', 'Marca', 'Precio')
 tablaCons.column('#0', width=50, minwidth=50)
@@ -56,7 +72,27 @@ tablaCons.heading('Marca', text='Marca', anchor=tk.CENTER)
 tablaCons.heading('Precio', text='Precio', anchor=tk.CENTER)
 tablaCons.pack()
 
-btnConsulta = Button(pestana3, text="Consultar").pack()
+btnConsulta = Button(pestana3, text="Consultar", command=ejecutaConsulta).pack()
+
+#Pestaña actualizar
+titulo4 = Label(pestana4, text='Registro productos').pack()
+varId = tk.StringVar()
+lblId = Label(pestana2, text='Id: ').pack()
+txtId = Entry(pestana2, textvariable=varId).pack()
+varNom = tk.StringVar()
+lblNom = Label(pestana4, text='Nombre: ').pack()
+txtNom = Entry(pestana4, textvariable=varNom).pack()
+varClas = tk.StringVar()
+lblClas = Label(pestana4, text='Clasificación: ').pack()
+txtClas = tk.Entry(pestana4, textvariable=varClas).pack()
+varMarc = tk.StringVar()
+lblMarc = Label(pestana4, text='Marca: ').pack()
+txtMarc = tk.Entry(pestana4, textvariable=varMarc).pack()
+varPrec = tk.StringVar()
+lblPrec = Label(pestana4, text='Precio: ').pack()
+txtPrec = tk.Entry(pestana4, textvariable=varPrec).pack()
+
+btnRegistrar = Button(pestana4, text='Actualizar', command=ejecutaActualizacion).pack()
 
 panel.add(pestana1, text='Alta bebidas')
 panel.add(pestana2, text='Baja bebidas')
