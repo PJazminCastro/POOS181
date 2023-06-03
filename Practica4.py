@@ -8,7 +8,6 @@ controlador = ConstructorBD()
 
 def ejecutaRegistro():
     controlador.registrarBebidas(varNom.get(), varClas.get(), varMarc.get(), varPrec.get())
-    print(varNom, varClas, varMarc, varPrec)
 def ejecutaEliminar():
     controlador.eliminarRBebidas(varId.get())
 def ejecutaConsulta():
@@ -17,7 +16,8 @@ def ejecutaConsulta():
     for usu in rUsu:
         tablaCons.insert('', 'end', text=usu[0], values=(usu[1], usu[2], usu[3], usu[4]))
 def ejecutaActualizacion():
-    controlador.actualizarRegistros(varNom.get(), varClas.get(), varMarc.get(), varPrec.get())
+    controlador.actualizarRegistros(varIdA.get(), varNomb.get(), varClasi.get(), varMarca.get(), varPreci.get())
+    print(varIdA, varNomb, varClasi, varMarca, varPreci)
 
 ventana = Tk()
 ventana.title('Almacen de bebidas - Practica 4')
@@ -76,21 +76,21 @@ btnConsulta = Button(pestana3, text="Consultar", command=ejecutaConsulta).pack()
 
 #Pestaña actualizar
 titulo4 = Label(pestana4, text='Registro productos').pack()
-varId = tk.StringVar()
-lblId = Label(pestana2, text='Id: ').pack()
-txtId = Entry(pestana2, textvariable=varId).pack()
-varNom = tk.StringVar()
-lblNom = Label(pestana4, text='Nombre: ').pack()
-txtNom = Entry(pestana4, textvariable=varNom).pack()
-varClas = tk.StringVar()
-lblClas = Label(pestana4, text='Clasificación: ').pack()
-txtClas = tk.Entry(pestana4, textvariable=varClas).pack()
-varMarc = tk.StringVar()
-lblMarc = Label(pestana4, text='Marca: ').pack()
-txtMarc = tk.Entry(pestana4, textvariable=varMarc).pack()
-varPrec = tk.StringVar()
-lblPrec = Label(pestana4, text='Precio: ').pack()
-txtPrec = tk.Entry(pestana4, textvariable=varPrec).pack()
+varIdA = tk.StringVar()
+lblIdA = Label(pestana4, text='Id: ').pack()
+txtIdA = Entry(pestana4, textvariable=varIdA).pack()
+varNomb = tk.StringVar()
+lblNomb = Label(pestana4, text='Nombre: ').pack()
+txtNomb = Entry(pestana4, textvariable=varNomb).pack()
+varClasi = tk.StringVar()
+lblClasi = Label(pestana4, text='Clasificación: ').pack()
+txtClasi = tk.Entry(pestana4, textvariable=varClasi).pack()
+varMarca = tk.StringVar()
+lblMarca = Label(pestana4, text='Marca: ').pack()
+txtMarca = tk.Entry(pestana4, textvariable=varMarca).pack()
+varPreci = tk.StringVar()
+lblPreci = Label(pestana4, text='Precio: ').pack()
+txtPreci = tk.Entry(pestana4, textvariable=varPreci).pack()
 
 btnRegistrar = Button(pestana4, text='Actualizar', command=ejecutaActualizacion).pack()
 

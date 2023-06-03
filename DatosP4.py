@@ -48,21 +48,21 @@ class ConstructorBD:
             return RSUuarios
         except sqlite3.OperationalError:
             print('Error de consulta')
-    def actualizarRegistros(self, id, nombre, clasificacion, marca, precio):
+    def actualizarRegistros(self, id, nomb, clas, marc, prec):
         conx = self.conexionBD()
         if(id == ''):
             messagebox.showwarning('Error', 'Ingrese un ID.')
             conx.close()
         else:
             conx = self.conexionBD()
-            if(nombre == '' or clasificacion == '', marca == '', precio == ''):
+            if(nomb == '' or clas == '', marc == '', prec == ''):
                 messagebox.showwarning('Error', 'Formulario incompleto.')
                 conx.close()
             else:
                 cursor = conx.cursor()
-                datos = (nombre, clasificacion, marca, precio)
+                datosA = (nomb, clas, marc, prec)
                 sqlUpdate = 'update tbrRegistros set (nombre, clasificacion, marca, precio) = (?,?,?,?) where id = '+id
-                cursor.execute(sqlUpdate, datos)
+                cursor.execute(sqlUpdate, datosA)
                 conx.commit()
                 conx.close()
                 messagebox.showinfo('Exit', 'Registro actualizado correctamente.')
