@@ -17,7 +17,19 @@ def ejecutaConsulta():
         tablaCons.insert('', 'end', text=usu[0], values=(usu[1], usu[2], usu[3], usu[4]))
 def ejecutaActualizacion():
     controlador.actualizarRegistros(varIdA.get(), varNomb.get(), varClasi.get(), varMarca.get(), varPreci.get())
-    print(varIdA, varNomb, varClasi, varMarca, varPreci)
+def consultaUno():
+    conx = sqlite3.connect("C:/Users/mimoc/OneDrive/OTROS/GitHub/POOS181/RegistroBebidas.db")
+    cursor = conx.cursor()
+    consulta = 'select avg(precio) from tbrRegistros'
+    cursor.execute(consulta)
+    res = cursor.fetchone()
+    precioprom = res[0]
+    messagebox.showinfo ('Precio promedio', 'El precio promedio de las bebidas es: '+str(precioprom)+'')
+    conx.close()
+def consultaDos():
+    controlador.consultaDos(varMarcaUno.get())
+def consultaTres():
+    controlador.consultaTres(varClasifTres.get())
 
 ventana = Tk()
 ventana.title('Almacen de bebidas - Practica 4')
@@ -30,6 +42,7 @@ pestana1 = ttk.Frame(panel)
 pestana2 = ttk.Frame(panel)
 pestana3 = ttk.Frame(panel)
 pestana4 = ttk.Frame(panel)
+pestana5 = ttk.Frame(panel)
 
 #Pestaña agregar producto
 titulo = Label(pestana1, text='Registro productos').pack()
@@ -94,9 +107,23 @@ txtPreci = tk.Entry(pestana4, textvariable=varPreci).pack()
 
 btnRegistrar = Button(pestana4, text='Actualizar', command=ejecutaActualizacion).pack()
 
+#Pestaña consultas
+titulo5 = Label(pestana5, text='Consultas').pack()
+btnConsulta1 = Button(pestana5, text='Precio promedio de bebidas', command=consultaUno).pack()
+varMarcaUno = tk.StringVar()
+lblMarcaUno = Label(pestana5, text='Marca: ').pack()
+txtMarcaUno = Entry(pestana5, textvariable=varMarcaUno).pack()
+btnConsulta2 = Button(pestana5, text='Cantidad de bebidas por marca', command=consultaDos).pack()
+varClasifTres = tk.StringVar()
+lblClasifTes = Label(pestana5, text='Clasificación: ').pack()
+txtClasifTres = Entry(pestana5, textvariable=varClasifTres).pack()
+btnConsulta3 = Button(pestana5, text='Cantidas por clasificación', command=consultaTres).pack()
+
 panel.add(pestana1, text='Alta bebidas')
 panel.add(pestana2, text='Baja bebidas')
 panel.add(pestana3, text='Consultar bebidas')
 panel.add(pestana4, text='Actualizar bebidas')
+panel.add(pestana5, text='Consultas')
+
 
 ventana.mainloop()

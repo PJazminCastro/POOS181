@@ -48,21 +48,48 @@ class ConstructorBD:
             return RSUuarios
         except sqlite3.OperationalError:
             print('Error de consulta')
-    def actualizarRegistros(self, id, nomb, clas, marc, prec):
+    def actualizarRegistros(self, id, nombre, clasificacion, marca, precio):
         conx = self.conexionBD()
         if(id == ''):
-            messagebox.showwarning('Error', 'Ingrese un ID.')
+            messagebox.showwarning('Error', 'Ingrese un ID')
             conx.close()
         else:
             conx = self.conexionBD()
-            if(nomb == '' or clas == '', marc == '', prec == ''):
+            if(nombre == '' or clasificacion == '' or marca == '' or precio == ''):
                 messagebox.showwarning('Error', 'Formulario incompleto.')
                 conx.close()
             else:
                 cursor = conx.cursor()
-                datosA = (nomb, clas, marc, prec)
+                datos = (nombre, clasificacion, marca, precio)
                 sqlUpdate = 'update tbrRegistros set (nombre, clasificacion, marca, precio) = (?,?,?,?) where id = '+id
-                cursor.execute(sqlUpdate, datosA)
+                cursor.execute(sqlUpdate, datos)
                 conx.commit()
                 conx.close()
-                messagebox.showinfo('Exit', 'Registro actualizado correctamente.')
+                messagebox.showinfo('Exito', 'Registro actualizado correctamente.')
+    def consultaDos(self, marcaUno):
+        conx = self.conexionBD()
+        cursor = conx.cursor()
+        if(marcaUno == ''):
+            messagebox.showwarning('Error', 'Formulario incompleto.')
+            conx.close()
+        else:
+            consultados = 'select count(*) from tbrRegistros where marca = ?'
+            cursor.execute(consultados, (marcaUno,))
+            resu = cursor.fetchone()
+            canbebidas = resu[0]
+            messagebox.showinfo('Cantidad x marca', 'La cantidad de bebidas de la marca '+marcaUno+'  es: '+str(canbebidas))
+            conx.close()
+    def consultaTres(self, clasifTres):
+        conx = self.conexionBD()
+        cursor = conx.cursor()
+        if(clasifTres == ''):
+            messagebox.showwarning('Error', 'Formulario incompleto.')
+            conx.close()
+        else:
+            consultados = 'select count(*) from tbrRegistros where clasificacion = ?'
+            cursor.execute(consultados, (clasifTres,))
+            resu = cursor.fetchone()
+            canbebida = resu[0]
+            messagebox.showinfo('Cantidad x clasificación', 'La cantidad de bebidas de la clasificación '+clasifTres+'  es: '+str(canbebida))
+            conx.close()
+        
