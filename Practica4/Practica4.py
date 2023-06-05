@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
-from DatosP4 import *
+from Practica4.DatosP4 import *
 
 
 controlador = ConstructorBD()
