@@ -10,6 +10,15 @@
     <br>
     <h1>Gestión de albums.</h1>
     <br>
+
+    {% with mensajes = get_flashed_messages() %}
+        {% if  mensajes %}
+            {% for msj in mensajes %}
+                <h3> {{ mesj }}</h3>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <br>
     <form action="/guardar" method="post">
         <input type="text" name="txtTitulo" placeholder="Escribe titulo">
