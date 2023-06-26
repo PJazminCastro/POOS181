@@ -5,10 +5,10 @@ from flask_mysqldb import MySQL
 #Inicalizacion del APP
 app = Flask(__name__) #se le indica que se va a trabajar con Flask - inicialización APP
 #Configuración de la conexión
-app.config['MySQL_HOST']='localhost:3306'
-app.config['MySQL_USER']='root'
-app.config['MySQL_PASSWORD']=''
-app.config['MySQL_DB']='bdflask'
+app.config['MYSQL_HOST']='localhost'
+app.config['MYSQL_USER']='root'
+app.config['MYSQL_PASSWORD']=''
+app.config['MYSQL_DB']='bdflask'
 app.secret_key='mysecretkey'
 mysql=MySQL(app)
 
