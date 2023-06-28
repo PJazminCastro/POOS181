@@ -15,7 +15,10 @@ mysql=MySQL(app)
 #Ruta principal
 @app.route('/') #declara la ruta http://localhost:5000 - RUTA RAIZ/INDEX
 def index():
-    return render_template('index.html')
+    cc = mysql.connection.cursor() #CC = cursor de la consulta
+    cc.execute('select * from tbalbum')
+    conAlbum = cc.fetchall( ) 
+    return render_template('index.html', listalbum = conAlbum) #Se envia junto con la vista para verla en la tabla
 
 #Ruta http://localhost:5000/guardar - tipo POST para insert
 @app.route('/guardar', methods=['POST'])
