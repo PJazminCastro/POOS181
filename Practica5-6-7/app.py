@@ -35,10 +35,20 @@ def guardar():
     flash('El album se ha guardado correctamente')
     return redirect(url_for('index'))
 
+@app.route('/editar/<string:id>')
+def editar(id):
+    cursorID = mysql.connection.cursor()
+    cursorID.execute('select * from tbalbum  where id = %s', (id,))
+    consultaID = cursorID.fetchone()
+    return render_template('editarAlbum.html', UpdateAlbum = consultaID)
+
+@app.route('/actualizar/<id>', methods=['POST'])
+def actualizar(id):
+    
+
 @app.route('/eliminar')
 def eliminar():
     return "Se elimino en la BD"
-
 
 #permite ejecutar el servidor en el puerto 5000
 if __name__ == '__main__': 
