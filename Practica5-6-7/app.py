@@ -59,7 +59,7 @@ def eliminar(id):
     cursorDelt = mysql.connection.cursor()
     cursorDelt.execute('delete from tbalbum where id = %s', (id))
     mysql.connection.commit()
-    return "Se elimino en la BD"
+    return redirect(url_for('index'))
 
 #permite ejecutar el servidor en el puerto 5000
 if __name__ == '__main__': 
