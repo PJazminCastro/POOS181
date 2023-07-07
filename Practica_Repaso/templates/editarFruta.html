@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar frutas</title>
+</head>
+<body>
+    <h1> Fruta a editar </h1>
+    <br>
+    <br>
+    
+    <form action="/actualizar/{{UpdateFruta.0}}" method="post">
+        <input type="text" name="txtFruta" value="{{UpdateFruta.1}}">
+        <input type="text" name="txtTemporada" value="{{UpdateFruta.2}}">
+        <input type="text" name="txtPrecio" value="{{UpdateFruta.3}}">
+        <input type="number" name="txtStock" value="{{UpdateFruta.4}}">
+        <button type="submit">Actualizar</button>
+    </form>
+</body>
+</html>
