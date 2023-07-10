@@ -12,15 +12,13 @@ app.config['MYSQL_DB']='db_fruteria'
 app.secret_key='mysecretkey'
 mysql=MySQL(app)
 
-@app.route('/') 
-def ingresar():
-    cc = mysql.connection.cursor() #CC = cursor de la consulta
-    cc.execute('select * from tbfrutas')
-    conFru = cc.fetchall( ) 
-    return render_template('ingresar.html', listaF = conFru) 
-#Ruta http://localhost:5000/guardar - tipo POST para insert
+@app.route("/")
+def index():
+    return render_template('ingresar.html')
+
+#INGRESAR DATOS
 @app.route('/ingresar', methods=['POST'])
-def guardar():
+def ingresar():
     if request.method=='POST':
         #pasamos a variables el contenido de los input
         Vfruta=request.form['txtFruta']
@@ -32,14 +30,23 @@ def guardar():
         CS.execute('insert into tbfrutas(fruta, temporada, precio, stock) values (%s,%s,%s,%s)', (Vfruta, Vtemporada, Vprecio, Vstock))
         mysql.connection.commit()
     flash('La fruta se ha guardado correctamente')
-    return redirect(url_for('ingresar'))
+    return redirect(url_for('index'))
 
-@app.route('/editar/<string:id>')
-def editar(id):
-    cursorID = mysql.connection.cursor()
-    cursorID.execute('select * from tbfrutas  where id = %s', (id,))
-    consultaID = cursorID.fetchone()
-    return render_template('editarFruta.html', UpdateFruta = consultaID)
+#PESTAÑA EDITAR FRUTA
+@app.route('/editar')
+def editar():
+    cursorEdi = mysql.connection.cursor() #CC = cursor de la consulta
+    cursorEdi.execute('select * from tbfrutas')
+    conFru = cursorEdi.fetchall( ) 
+    return render_template('consulta.html', listaF = conFru) 
+
+#ACTUALIZAR FRUTA
+@app.route('/actualizarVista/<string:id>')
+def actualizarVista(id):
+    cursorUpdV = mysql.connection.cursor()
+    cursorUpdV.execute('select * from tbfrutas where id = %s', (id,))
+    confru = cursorUpdV.fetchone()
+    return render_template('editarFruta.html', UpdateFruta = confru)
 
 @app.route('/actualizar/<id>', methods=['POST'])
 def actualizar(id):
@@ -52,9 +59,10 @@ def actualizar(id):
         cursorUpd.execute('update tbfrutas set fruta = %s, temporada = %s, precio = %s, stock = %s where id = %s', (varFruta, varTemporada, varPrecio, varStock, id))
         mysql.connection.commit()
     flash ('La fruta '+varFruta+' se actualizo correctamente.')
-    return redirect(url_for('ingresar'))
+    return redirect(url_for('editar'))
 
-@app.route("/confirmacion/<id>")
+#ELIMINACION DATOS
+@app.route('/confirmacion/<id>')
 def eliminar(id):
     cursorConfi = mysql.connection.cursor()
     cursorConfi.execute('select * from tbfrutas where id = %s', (id,))
@@ -67,18 +75,21 @@ def eliminarBD(id):
     cursorDlt.execute('delete from tbfrutas where id = %s', (id,))
     mysql.connection.commit()
     flash('Se elimino la fruta con id '+ id)
-    return redirect(url_for('ingresar'))
+    return redirect(url_for('index'))
 
-@app.route("/buscar", methods=['POST'])
-def buscar():
-    if request.method == 'POST':
-        varFruta = request.form['txtFruta']
-        cursorBuq = mysql.connection.cursor()
-        cursorBuq.execute('select * from tbfrutas where fruta = %s', (varFruta))
-        busq = cursorBuq.fetchone()
-        mysql.connection.commit()
-    return render_template('ingresar.html', busqXn = busq)
+#CONSULTAR POR NOMBRE
+@app.route("/consulta")
+def consulta():
+    return render_template('consultaxnombre.html')
 
-#permite ejecutar el servidor en el puerto 5000
+@app.route("/buscarxnombre")
+def buscarxnombre():
+    varfrutas = request.form.get('txtFrutas', False)
+    cursorCons = mysql.connection.cursor()
+    cursorCons.execute('select * from tbfrutas where fruta = %s order by fruta', [varfrutas])
+    datos = cursorCons.fetchone()
+    print (datos)
+    return render_template('consultaxnombre.html', listaF = datos)
+
 if __name__ == '__main__': 
     app.run(port=5000, debug=True)

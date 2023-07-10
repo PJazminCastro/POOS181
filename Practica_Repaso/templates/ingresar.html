@@ -29,66 +29,9 @@
     </form>
     <br>
     <br>
-    <h1>Frutas guardadas</h1>
+    <a href=/editar><button>Editar frutas</button></a>
     <br>
-        <table>
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Fruta</td>
-                    <td>Temporada</td>
-                    <td>Precio</td>
-                    <td>Stock</td>
-                </tr>
-            </thead>
-            <tbody>
-                {% for fru in listaF %} 
-                <tr>
-                    <td> {{ fru.0 }} </td>
-                    <td> {{ fru.1 }} </td>
-                    <td> {{ fru.2 }} </td>
-                    <td> {{ fru.3 }} </td>
-                    <td> {{ fru.4 }} </td>
-                    <td> 
-                        <a href=/editar/{{fru.0}}> Editar </a> 
-                        <a href=/confirmacion/{{fru.0}}> Borrar </a> 
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <br>
-        <br>
-        <form action="/actualizar">
-        <button type="submit">Actualizar</button>
-        </form>
-        <br>
-        <br>
-        <form action="/buscar" method="post">
-            <input type="text" name="txtFruta" placeholder="Ingrese el nombre de la fruta">
-            <button type="submit">Buscar</button>
-            <table>
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>Fruta</td>
-                        <td>Temporada</td>
-                        <td>Precio</td>
-                        <td>Stock</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for fru in listaF %} 
-                    <tr>
-                        <td> {{ fru.0 }} </td>
-                        <td> {{ fru.1 }} </td>
-                        <td> {{ fru.2 }} </td>
-                        <td> {{ fru.3 }} </td>
-                        <td> {{ fru.4 }} </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </form>
+    <br>
+    <a href=/consulta><button>Consulta x nombre</button></a>
     </body>
     </html>
