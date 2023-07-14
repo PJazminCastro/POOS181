@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen P2 - Floreria</title>
+</head>
+<body>
+    <br>
+    <br>
+    <form action="/guardar" method="post">
+        <input type="text" name="txtNombre" placeholder="Escribe el nombre de la flore">
+        <input type="number" name="txtCantidad" placeholder="Escribe la candidad">
+        <input type="text" name="txtPrecio" placeholder="Escribe el precio">
+        <button type="submit">Guardar</button>
+    </form>
+    <br>
+<br>
+<h1>Flores guardadas</h1>
+<br>
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Cantidad</td>
+                <td>Precio</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flor in listflores %} 
+            <tr>
+                <td> {{ flor.0 }} </td>
+                <td> {{ flor.1 }} </td>
+                <td> {{ flor.2 }} </td>
+                <td> {{ flor.3 }} </td>
+                <td> 
+                    <a href=/editar/{{flor.0}}> Editar </a> 
+                    <a href=/confirmacion/{{flor.0}}> Borrar </a> 
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
